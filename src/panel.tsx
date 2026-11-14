@@ -5,7 +5,7 @@ import { agentName, agentNames, dateLocale, note, source, t, type Key, type Lang
 const snap = atom<Snapshot | null>(null)
 const tab = atom('tab', 'skill', { persist: 'plugin' })
 const onlyUnused = atom('onlyUnused', false, { persist: 'plugin' })
-const lang = atom<Lang>('lang', 'en', { persist: 'plugin' })
+const lang = atom<Lang>('lang', 'es', { persist: 'plugin' })
 const range = atom('range', 30, { persist: 'plugin' })
 const project = atom('project', 'all', { persist: 'plugin' })
 const sortBy = atom('sortBy', 'usage', { persist: 'plugin' })
@@ -288,8 +288,8 @@ export default function Panel() {
             <Select
               label={t(l, 'language')}
               value={l}
-              options={[{ value: 'en', label: 'English' }, { value: 'de', label: 'Deutsch' }]}
-              onChange={(v) => set(lang, v === 'de' ? 'de' : 'en')}
+              options={[{ value: 'es', label: 'Español' }, { value: 'en', label: 'English' }, { value: 'de', label: 'Deutsch' }]}
+              onChange={(v) => set(lang, v === 'de' ? 'de' : v === 'en' ? 'en' : 'es')}
             />
             {memory.length > 0 ? <Grid columns={1} gap="sm">{memory.map((r) => <Tile2 key={r.id} r={r} l={l} />)}</Grid> : null}
             <Heading level={3}>{t(l, 'toolsByCalls')}</Heading>
